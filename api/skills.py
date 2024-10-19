@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, request
-# from bson import ObjectId
 from db.config import mongo
 
 skills_blueprint = Blueprint('skills', __name__)
