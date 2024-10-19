@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, request
-from bson import ObjectId
 from db.config import mongo
 
 experience_blueprint = Blueprint('experience', __name__)
@@ -20,7 +19,7 @@ def get_experience():
 @experience_blueprint.route('/api/experience/<experience_id>', methods=['GET'])
 def get_experience_by_id(experience_id):
     try:
-        experience = mongo.db.experience.find_one({"_id": ObjectId(experience_id)})
+        experience = mongo.db.experience.find_one({"_id": experience_id})
         return jsonify(serialize_doc(experience)) if experience else jsonify({"error": "Experience not found"}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500

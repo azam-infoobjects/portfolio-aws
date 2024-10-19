@@ -12,5 +12,5 @@ def get_contacts():
     try:
         contacts = mongo.db.contacts.find()
         return jsonify([serialize_doc(contact) for contact in contacts])
-    except:
-        return jsonify({"error": str(e)}), 500
+    except :
+        return jsonify({"error fetching contacts"}), 500

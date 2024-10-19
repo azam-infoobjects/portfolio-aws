@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify
-from flask_pymongo import PyMongo
 from db.config import mongo
 
 

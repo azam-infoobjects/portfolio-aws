@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from bson import ObjectId
+# from bson import ObjectId
 from db.config import mongo
 
 skills_blueprint = Blueprint('skills', __name__)
@@ -20,7 +20,7 @@ def get_skills():
 @skills_blueprint.route('/api/skills/<skill_id>', methods=['GET'])
 def get_skill_by_id(skill_id):
     try:
-        skill = mongo.db.skills.find_one({"_id": ObjectId(skill_id)})
+        skill = mongo.db.skills.find_one({"_id": skill_id})
         return jsonify(serialize_doc(skill)) if skill else jsonify({"error": "Skill not found"}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500
