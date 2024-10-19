@@ -14,6 +14,7 @@ def get_experience():
         experience = mongo.db.experiences.find()
         return jsonify([serialize_doc(exp) for exp in experience])
     except Exception as e:
+        print(e)
         return jsonify({"error": str(e)}), 500
 
 @experience_blueprint.route('/api/experience/<experience_id>', methods=['GET'])

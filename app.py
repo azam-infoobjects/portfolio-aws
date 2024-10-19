@@ -6,10 +6,11 @@ from api.header import header_blueprint
 from api.contacts import contacts_blueprint
 from db.config import Config
 from db.config import mongo
+from flask_cors import CORS
 
 app = Flask(__name__, static_folder='./dist', static_url_path='/')
 
-# CORS(app)
+CORS(app)
 
 app.config.from_object(Config)
 
